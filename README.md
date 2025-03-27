@@ -10,20 +10,37 @@
 - Gitの状態確認（ブランチ、最新コミット、変更一覧）
 - STRUCTURE.md や README.md の自動生成（Markdown形式）
 
-## 3. インストール方法（GitHubから）
+## 3. インストール方法
+
+### GitHubからのインストール
 
 ```bash
-git clone https://github.com/mut-ar-com/sei-ri-kun.git
+# リポジトリをクローン
+git clone https://github.com/themut000/sei-ri-kun.git
+
+# プロジェクトディレクトリに移動
 cd sei-ri-kun
+
+# 依存関係をインストール
 npm install
+
+# CLIコマンドをグローバルに登録
 npm link
 ```
 
-このあと、以下のようにコマンドが使えます：
+### よくあるエラーと対処方法
 
-```bash
-整理くん ./my-project
-```
+1. `repository not found` エラー
+   - 原因：リポジトリURLが間違っている
+   - 対処：正しいURL（`https://github.com/themut000/sei-ri-kun.git`）を使用しているか確認
+
+2. `ENOENT: no such file or directory` エラー
+   - 原因：プロジェクトディレクトリが存在しない
+   - 対処：`cd sei-ri-kun` を実行する前に、正しいディレクトリにいることを確認
+
+3. `command not found: 整理くん` エラー
+   - 原因：`npm link` が実行されていない
+   - 対処：プロジェクトディレクトリで `npm link` を実行
 
 ## 4. 使い方
 
@@ -72,6 +89,33 @@ npm link
 整理くん ./my-project --docs --output ./my-docs
 ```
 
+### 出力例
+
+```
+📁 プロジェクト構造の可視化: ./my-project
+
+├── README.md
+├── package.json
+├── src/
+│   ├── index.js
+│   └── commands/
+│       ├── visualize.js
+│       ├── git.js
+│       └── docs.js
+└── tests/
+    └── index.test.js
+
+📊 Gitの状態
+現在のブランチ: main
+最新のコミット: abc1234
+変更状態:
+  - 変更されたファイル: README.md
+  - 未追跡のファイル: .env
+
+📝 ドキュメント生成
+✨ 処理が完了しました！
+```
+
 ## 5. 開発
 
 ```bash
@@ -85,5 +129,5 @@ MIT
 
 ## リポジトリ
 
-- GitHub: [mut-ar-com/haihin](https://github.com/mut-ar-com/haihin)
-- Issues: [GitHub Issues](https://github.com/mut-ar-com/haihin/issues) 
+- GitHub: [themut000/sei-ri-kun](https://github.com/themut000/sei-ri-kun)
+- Issues: [GitHub Issues](https://github.com/themut000/sei-ri-kun/issues) 
