@@ -1,64 +1,89 @@
 # 整理くん (Sei-ri-kun)
 
-プロジェクト構成の可視化とドキュメント作成を支援するツールです。
+## 1. プロジェクト概要
 
-## 機能
+整理くん (Sei-ri-kun) は、プロジェクト構成の可視化とドキュメント生成を行うCLIツールです。
 
-- プロジェクトのディレクトリ構造をツリー形式で可視化
-- Gitの状態（ブランチ、コミット履歴、変更状態）の表示
-- プロジェクトのドキュメント自動生成
+## 2. 主な機能
 
-## インストール
+- ディレクトリ構造のツリー表示
+- Gitの状態確認（ブランチ、最新コミット、変更一覧）
+- STRUCTURE.md や README.md の自動生成（Markdown形式）
+
+## 3. インストール方法（GitHubから）
 
 ```bash
+git clone https://github.com/mut-ar-com/sei-ri-kun.git
+cd sei-ri-kun
 npm install
+npm link
 ```
 
-## 使い方
-
-### プロジェクト構造の可視化
+このあと、以下のようにコマンドが使えます：
 
 ```bash
-node src/index.js visualize [options]
+整理くん ./my-project
 ```
 
-オプション:
-- `-p, --path <path>`: 可視化するプロジェクトのパス（デフォルト: カレントディレクトリ）
+## 4. 使い方
+
+### 基本的な使い方
+
+```bash
+整理くん [path]
+```
+
+### オプション
+
 - `-i, --ignore <patterns...>`: 無視するファイルパターン
+- `-g, --git`: Gitの状態も表示
+- `-d, --docs`: ドキュメントを生成
+- `-o, --output <path>`: ドキュメントの出力先ディレクトリ（デフォルト: ./docs）
 
-### Gitの状態表示
+### 使用例
 
+1. プロジェクト構造の可視化のみ：
 ```bash
-node src/index.js git [options]
+整理くん ./my-project
 ```
 
-オプション:
-- `-p, --path <path>`: Gitリポジトリのパス（デフォルト: カレントディレクトリ）
-
-### ドキュメント生成
-
+2. Gitの状態も表示：
 ```bash
-node src/index.js docs [options]
+整理くん ./my-project --git
 ```
 
-オプション:
-- `-p, --path <path>`: ドキュメントを生成するプロジェクトのパス（デフォルト: カレントディレクトリ）
-- `-o, --output <path>`: 出力先ディレクトリ（デフォルト: ./docs）
+3. ドキュメントも生成：
+```bash
+整理くん ./my-project --docs
+```
 
-## 開発
+4. すべての機能を使用：
+```bash
+整理くん ./my-project --git --docs
+```
 
-### 依存関係のインストール
+5. 特定のファイルを無視：
+```bash
+整理くん ./my-project --ignore "*.log" --ignore "node_modules"
+```
+
+6. ドキュメントの出力先を指定：
+```bash
+整理くん ./my-project --docs --output ./my-docs
+```
+
+## 5. 開発
 
 ```bash
 npm install
-```
-
-### テストの実行
-
-```bash
 npm test
 ```
 
-## ライセンス
+## 6. ライセンス
 
-MIT 
+MIT
+
+## リポジトリ
+
+- GitHub: [mut-ar-com/haihin](https://github.com/mut-ar-com/haihin)
+- Issues: [GitHub Issues](https://github.com/mut-ar-com/haihin/issues) 
