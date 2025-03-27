@@ -1,21 +1,18 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
+import { program } from 'commander';
 import { visualizeProject } from './commands/visualize.js';
 import { gitStatus } from './commands/git.js';
 import { generateDocs } from './commands/docs.js';
 import chalk from 'chalk';
-
-const program = new Command();
 
 program
   .name('整理くん')
   .description('プロジェクト構成可視化・ドキュメント作成支援ツール')
   .version('1.0.0');
 
-// デフォルトコマンド：プロジェクト構造の可視化
 program
-  .argument('[path]', 'プロジェクトのパス', process.cwd())
+  .argument('[path]', '解析したいパス', '.')
   .option('-i, --ignore <patterns...>', '無視するファイルパターン')
   .option('-g, --git', 'Gitの状態も表示')
   .option('-d, --docs', 'ドキュメントを生成')
